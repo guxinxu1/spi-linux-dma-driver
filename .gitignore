@@ -1,0 +1,17 @@
+# 内核编译产物
+*.o
+*.ko
+*.mod
+*.mod.c
+*.symvers
+*.order
+*.cmd
+.tmp_*
+modules.builtin
+modules.order
+
+# 编辑器临时文件
+*.swp
+*.swo
+*~
+.DS_Store
