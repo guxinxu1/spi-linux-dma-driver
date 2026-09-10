@@ -15,6 +15,16 @@
 
 #include "spi_dma_sync.h"
 
+/* ============================================================
+ * 假异步版（基准对照组，性能等价于 spi_sync）
+ *
+ * spi_async 提交后立即 wait_for_completion 死等硬件完成，
+ * CPU 在 DMA 搬运期间什么也没做。语义上和 spi_sync 完全等价：
+ *   spi_sync 内部实现就是 spi_async + wait_for_completion。
+ *
+ * 本版用作性能基准，与 spi_dma_async/ 的 ping-pong 双缓冲版
+ * 做 AB 对比，量化"真异步"相对"伪异步"的吞吐增益。
+ * ============================================================ */
 
 struct spi_dma_data {
 	struct spi_device	*spi;
