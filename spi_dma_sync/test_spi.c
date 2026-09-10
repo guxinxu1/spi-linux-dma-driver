@@ -1,5 +1,5 @@
-/* 用户态测试程序：读 /dev/spi_sync0
- * 与 spi_dma_async/ 下的 test_spi.c 源码一致，仅设备节点名不同，
+/* 用户态测试程序：读 /dev/spi_async0
+ * 与 ../spi_dma_sync/test_spi.c 源码一致，仅设备节点名不同，
  * 方便两版分别运行后对比 time/丢帧率。
  */
 #include <stdio.h>
@@ -10,11 +10,11 @@
 #include <errno.h>
 #include <sys/select.h>
 #include <sys/ioctl.h>
-#include "spi_dma_sync.h"
+#include "spi_dma_async.h"
 
 int main(int argc, char **argv)
 {
-	const char *path = argc > 1 ? argv[1] : "/dev/spi_sync0";
+	const char *path = argc > 1 ? argv[1] : "/dev/spi_async0";
 	int fd = open(path, O_RDWR);
 	if (fd < 0) {
 		perror("open");

@@ -1,6 +1,6 @@
 ifneq ($(KERNELRELEASE),)
 
-obj-m += spi_dma_sync.o
+obj-m += spi_dma_async.o
 
 else
 
